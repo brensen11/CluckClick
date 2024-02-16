@@ -1,0 +1,14 @@
+.config-page-body {
+    display: flex;
+    flex-direction: row;
+}
+
+.config-page-rs {
+    display: flex;
+    flex-direction: column;
+}
+
+.config-page-topbar {
+    display: flex;
+    flex-direction: row;
+}

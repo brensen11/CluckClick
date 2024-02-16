@@ -1,0 +1,19 @@
+.item {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    border: 1px solid grey;
+    border-radius: 8px;
+    cursor: pointer;
+    margin-bottom: 12px;
+}
+
+.item:hover {
+    background-color: d
+}
+
+.item-list {
+    display: flex;
+    flex-direction: column;
+}

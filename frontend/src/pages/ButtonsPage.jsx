@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom"
 import { ItemGrid } from "../components/ItemComponents"
 import CategorySelection from "../components/CategorySelection"
+import { useQuery } from "react-query";
 
 function ConfigLink() {
     return (
