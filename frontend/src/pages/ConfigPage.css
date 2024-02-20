@@ -1,6 +1,12 @@
+.config-page {
+    display: flex;
+    flex-direction: column;
+}
+
 .config-page-body {
     display: flex;
     flex-direction: row;
+    justify-content: space-around;
 }
 
 .config-page-rs {

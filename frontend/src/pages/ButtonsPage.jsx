@@ -37,7 +37,8 @@ function RightSide() {
 function ButtonsPage() {
     return (
         <>
-            <ItemGrid />
+            <ItemGrid items={[]} />
+            <>Button Grid Go Here</>
             <RightSide />
         </>
     )
