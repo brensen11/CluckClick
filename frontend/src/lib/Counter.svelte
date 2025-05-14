@@ -5,6 +5,6 @@
   }
 </script>
 
-<button onclick={increment}>
+<button type="button" class="btn preset-filled-primary-50-950" onclick={increment}>
   count is {count}
 </button>
