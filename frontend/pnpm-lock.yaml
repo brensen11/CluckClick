@@ -8,9 +8,15 @@ importers:
 
   .:
     dependencies:
+      '@lucide/svelte':
+        specifier: ^0.510.0
+        version: 0.510.0(svelte@5.28.6)
       '@tailwindcss/vite':
         specifier: ^4.1.6
         version: 4.1.6(vite@6.3.5(jiti@2.4.2)(lightningcss@1.29.2))
+      '@tanstack/svelte-query':
+        specifier: ^5.76.0
+        version: 5.76.0(svelte@5.28.6)
       tailwindcss:
         specifier: ^4.1.6
         version: 4.1.6
@@ -226,6 +232,11 @@ packages:
 
   '@jridgewell/trace-mapping@0.3.25':
     resolution: {integrity: sha512-vNk6aEwybGtawWmy/PzwnGDOjCkLWSD2wqvjGGAgOAwCGWySYXfYoxt00IJkTF+8Lb57DwOb3Aa0o9CApepiYQ==}
+
+  '@lucide/svelte@0.510.0':
+    resolution: {integrity: sha512-1zj0aj9K+eBK0sMtDQh1HfL2Xv7EY+SemBWFMMmoVN4mZ9Swc3e5cGs20knwdgt46kZnlEI/a29tX//zpl64LA==}
+    peerDependencies:
+      svelte: ^5
 
   '@rollup/rollup-android-arm-eabi@4.40.2':
     resolution: {integrity: sha512-JkdNEq+DFxZfUwxvB58tHMHBHVgX23ew41g1OQinthJ+ryhdRk67O31S7sYw8u2lTjHUPFxwar07BBt1KHp/hg==}
@@ -446,6 +457,14 @@ packages:
     resolution: {integrity: sha512-zjtqjDeY1w3g2beYQtrMAf51n5G7o+UwmyOjtsDMP7t6XyoRMOidcoKP32ps7AkNOHIXEOK0bhIC05dj8oJp4w==}
     peerDependencies:
       vite: ^5.2.0 || ^6
+
+  '@tanstack/query-core@5.76.0':
+    resolution: {integrity: sha512-FN375hb8ctzfNAlex5gHI6+WDXTNpe0nbxp/d2YJtnP+IBM6OUm7zcaoCW6T63BawGOYZBbKC0iPvr41TteNVg==}
+
+  '@tanstack/svelte-query@5.76.0':
+    resolution: {integrity: sha512-Y3tarQGErGJl/MbYfeV8GNGyToP55rmCORvqpqPMtx930QdlhDK9hcuVhLvRuWcxhhK+Cnhmi9S8iV67VdmMVQ==}
+    peerDependencies:
+      svelte: ^3.54.0 || ^4.0.0 || ^5.0.0
 
   '@tsconfig/svelte@5.0.4':
     resolution: {integrity: sha512-BV9NplVgLmSi4mwKzD8BD/NQ8erOY/nUE/GpgWe2ckx+wIQF5RyRirn/QsSSCPeulVpc3RA/iJt6DpfTIZps0Q==}
@@ -974,6 +993,10 @@ snapshots:
       '@jridgewell/resolve-uri': 3.1.2
       '@jridgewell/sourcemap-codec': 1.5.0
 
+  '@lucide/svelte@0.510.0(svelte@5.28.6)':
+    dependencies:
+      svelte: 5.28.6
+
   '@rollup/rollup-android-arm-eabi@4.40.2':
     optional: true
 
@@ -1155,6 +1178,13 @@ snapshots:
       '@tailwindcss/oxide': 4.1.6
       tailwindcss: 4.1.6
       vite: 6.3.5(jiti@2.4.2)(lightningcss@1.29.2)
+
+  '@tanstack/query-core@5.76.0': {}
+
+  '@tanstack/svelte-query@5.76.0(svelte@5.28.6)':
+    dependencies:
+      '@tanstack/query-core': 5.76.0
+      svelte: 5.28.6
 
   '@tsconfig/svelte@5.0.4': {}
 
