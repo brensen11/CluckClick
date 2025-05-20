@@ -1,13 +1,16 @@
 <script lang="ts">
   import Counter from './lib/Counter.svelte'
   import { Navigation } from '@skeletonlabs/skeleton-svelte'
-  import { House, Grid2X2Plus, LayoutPanelLeft, ChartNoAxesCombined } from '@lucide/svelte'
+  import { House, Grid2X2Plus, LayoutPanelLeft, ChartNoAxesCombined, Settings } from '@lucide/svelte'
   import HomePage from './pages/HomePage.svelte'
   import AddPage from './pages/AddPage.svelte'
   import ArrangePage from './pages/ArrangePage.svelte'
   import DataPage from './pages/DataPage.svelte'
+  import SettingsPage from './pages/SettingsPage.svelte'
 
   let value = $state('home');
+  // TODO on value change { change url }
+  // console.log("OUT: " + window.URL.toString())
 </script>
 
 <main class="w-dvw h-dvh">
@@ -23,18 +26,22 @@
         <Navigation.Tile id='data' label='Data'><ChartNoAxesCombined/></Navigation.Tile>
       {/snippet}
 
+      {#snippet footer()}
+        <Navigation.Tile id='settings' label='Settings'><Settings/></Navigation.Tile>
+      {/snippet}
     </Navigation.Rail>
     
-    <!-- Grid Go Here? -->
     <div class="flex items-center justify-center">
       {#if value == 'home'}
-        <HomePage></HomePage>
+        <HomePage/>
       {:else if value == 'add'}
-        <AddPage></AddPage>
+        <AddPage/>
       {:else if value == 'arrange'}
-        <ArrangePage></ArrangePage>
+        <ArrangePage/>
       {:else if value == 'data'}
-        <DataPage></DataPage>
+        <DataPage/>
+      {:else if value == 'settings'}
+        <SettingsPage/>
       {:else}
         <p class="opacity-20">(Content)</p>
       {/if}
