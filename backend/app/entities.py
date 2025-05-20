@@ -24,13 +24,13 @@ class ItemUpdate(BaseModel):
     name: Optional[str]
     image: Optional[str]
 
-class ItemRemove(BaseModel):
+class ItemDelete(BaseModel):
     id: int
 
 class ClickCreate(BaseModel):
     item_id: int
 
-class ClickRemove(BaseModel):
+class ClickDelete(BaseModel):
     click_id: int
 
 

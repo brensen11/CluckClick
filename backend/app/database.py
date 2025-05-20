@@ -7,9 +7,9 @@ from app.entities import (
     UserUpdate,
     ItemCreate,
     ItemUpdate,
-    ItemRemove,
+    ItemDelete, # TODO not using?? huh.
     ClickCreate, 
-    ClickRemove
+    ClickDelete
 )
 
 from app.schema import (
@@ -87,7 +87,7 @@ def update_item(session: Session, item_update: ItemUpdate, item: ItemInDB) -> It
     session.refresh(item)
     return item
 
-def remove_item(session: Session, item_id: int):
+def delete_item(session: Session, item_id: int):
     item = get_item(session, item_id)
     session.delete(item)
     session.commit()
@@ -107,7 +107,7 @@ def create_click(session: Session, item_id: int) -> ClickInDB:
     session.refresh(click)
     return click
 
-def remove_click(session: Session, click_id: int):
+def delete_click(session: Session, click_id: int):
     click = get_click(session, click_id)
     session.delete(click)
     session.commit()
