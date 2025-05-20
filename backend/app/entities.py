@@ -15,19 +15,19 @@ class UserUpdate(BaseModel):
     username: Optional[str] = Query(None)
     email: Optional[str] = Query(None)
 
-class ItemAdd(BaseModel):
+class ItemCreate(BaseModel):
     name: str
     image: str # TODO correct? image/file upload ... ?
 
 class ItemUpdate(BaseModel):
     id: int
-    name: str
-    image: str
+    name: Optional[str]
+    image: Optional[str]
 
 class ItemRemove(BaseModel):
     id: int
 
-class ClickAdd(BaseModel):
+class ClickCreate(BaseModel):
     item_id: int
 
 class ClickRemove(BaseModel):

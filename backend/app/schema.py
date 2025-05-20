@@ -34,7 +34,7 @@ class ItemInDB(SQLModel, table=True):
     id: Optional[int] = Field(default=None, primary_key=True)
     name: str
     image: str
-    user: int = Field(foreign_key='users.id')
+    user_id: int = Field(foreign_key='users.id')
 
 
 class ClickInDB(SQLModel, table=True):
@@ -42,4 +42,4 @@ class ClickInDB(SQLModel, table=True):
 
     id: Optional[int] = Field(default=None, primary_key=True)
     clicked_at: Optional[datetime] = Field(default_factory=datetime.now)
-    item: int = Field(foreign_key='items.id')
+    item_id: int = Field(foreign_key='items.id')
