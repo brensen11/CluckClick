@@ -1,5 +1,7 @@
 from fastapi import APIRouter, Depends
 from sqlmodel import Session
+from app.entities import *
+from app.database import *
 users_router = APIRouter(prefix="/users", tags=["Users"])
 
 # ----- asdf -----

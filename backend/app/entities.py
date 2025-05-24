@@ -64,7 +64,20 @@ class Click(SQLModel):
 #           Response Models           #
 # ----------------------------------- #
 
+class ItemResponse(BaseModel):
+    item: Item
+
+class UserResponse(BaseModel):
+    user: User
+
+class ClickResponse(BaseModel):
+    click: Click
+
 class ItemCollection(BaseModel):
     """Represents all Items associated with a user"""
     items: list[Item]
-    user: ForeignKey[User]
+    user_id: int
+
+class ClickCollection(BaseModel):
+    clicks: list[Click]
+    user_id: int

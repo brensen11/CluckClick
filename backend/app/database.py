@@ -70,8 +70,9 @@ def get_item(session: Session, item_id: int) -> ItemInDB:
     if not item:
         raise Exception("Add Exception Stuff")
     return item
-def create_item(session: Session, item_create: ItemCreate):
-    item = UserInDB(**item_create.model_dump(), created_at=datetime.now())
+
+def create_item(session: Session, item_create: ItemCreate) -> ItemInDB:
+    item = ItemInDB(**item_create.model_dump(), created_at=datetime.now())
     session.add(item)
     session.commit()
     session.refresh(item)
@@ -87,18 +88,27 @@ def update_item(session: Session, item_update: ItemUpdate, item: ItemInDB) -> It
     session.refresh(item)
     return item
 
-def delete_item(session: Session, item_id: int):
+def delete_item(session: Session, item_id: int) -> None:
     item = get_item(session, item_id)
     session.delete(item)
     session.commit()
 
 # ----- clicks ----- #
 
-def get_click(session: Session, click_id) -> ItemInDB:
-    click = session.get(ItemInDB, click_id)
+def get_click(session: Session, click_id) -> ClickInDB:
+    click = session.get(ClickInDB, click_id)
     if not click:
         raise Exception("Add Exception Stuff")
     return click
+
+def get_clicks_by_user_id(session: Session, user_id: int) -> list[ClickInDB]:
+    query = select(ClickInDB).where(ClickInDB.user_id == user_id)
+    return session.exec(query).all()
+
+def get_clicks_by_time(session: Session, user_id: int, timestamp: datetime) -> list[ClickInDB]:
+    query = select(ClickInDB).where(ClickInDB.user_id == user_id).where(ClickInDB.clicked_at >= timestamp)
+    return session.exec(query).all()
+
 
 def create_click(session: Session, item_id: int) -> ClickInDB:
     click = ClickInDB(item_id=item_id)
@@ -107,7 +117,7 @@ def create_click(session: Session, item_id: int) -> ClickInDB:
     session.refresh(click)
     return click
 
-def delete_click(session: Session, click_id: int):
+def delete_click(session: Session, click_id: int) -> None:
     click = get_click(session, click_id)
     session.delete(click)
     session.commit()
