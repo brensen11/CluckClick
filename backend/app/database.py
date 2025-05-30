@@ -1,15 +1,11 @@
 from datetime import datetime
-from sqlmodel import Session, SQLModel, create_engine, select, join
-import os
+from sqlmodel import Session, SQLModel, create_engine, select
 
 from app.entities import (
     UserCreate,
     UserUpdate,
     ItemCreate,
-    ItemUpdate,
-    ItemDelete, # TODO not using?? huh.
-    ClickCreate, 
-    ClickDelete
+    ItemUpdate
 )
 
 from app.schema import (
@@ -20,7 +16,7 @@ from app.schema import (
 
 # if os.environ.get("DB_LOCATION") == "RDS":
 
-db_url = "sqlite:///backend/pony_express.db"
+db_url = "sqlite:///app/cluckclick.db"
 echo = True
 connect_args = {"check_same_thread": False}
 
