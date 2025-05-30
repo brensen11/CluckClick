@@ -12,7 +12,7 @@ def get_item_by_id(item_id: int, session: Session = Depends(db.get_session)):
     return ItemResponse(item=item)
 
 
-@items_router.get("/{user_id}", response_model=ItemCollection)
+@items_router.get("/user/{user_id}", response_model=ItemCollection)
 def get_items_by_user(user_id: int, session: Session = Depends(db.get_session)):
     items = db.get_items(session, user_id)
     return ItemCollection(items=items, user_id=user_id)

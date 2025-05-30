@@ -45,6 +45,10 @@ def create_user(session: Session, user_create: UserCreate) -> UserInDB:
     session.refresh(user)
     return user
 
+def get_user(session: Session, user_id: int):
+    user = session.get(UserInDB, user_id)
+    return user
+
 def update_user(session: Session, update_user: UserUpdate, user: UserInDB) -> UserInDB:
     if update_user.username:
         user.username = update_user.username
@@ -98,12 +102,12 @@ def get_click(session: Session, click_id) -> ClickInDB:
     return click
 
 def get_clicks_by_user_id(session: Session, user_id: int) -> list[ClickInDB]:
-    query = select(ClickInDB).where(ClickInDB.user_id == user_id)
+    query = select(ClickInDB).join(ClickInDB.item).where(ItemInDB.user_id == user_id)
     return session.exec(query).all()
 
 def get_clicks_by_time(session: Session, user_id: int, timestamp: datetime) -> list[ClickInDB]:
-    query = select(ClickInDB).where(ClickInDB.user_id == user_id).where(ClickInDB.clicked_at >= timestamp)
-    return session.exec(query).all()
+    query = select(ClickInDB).join(ClickInDB.item).where(ItemInDB.user_id == user_id).where(ClickInDB.clicked_at >= timestamp)
+    return session.exec(query).all() or []
 
 
 def create_click(session: Session, item_id: int) -> ClickInDB:

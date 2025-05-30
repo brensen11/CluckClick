@@ -56,7 +56,7 @@ class UserUpdate(BaseModel):
 class ItemCreate(BaseModel):
     name: str
     image: str # TODO correct? image/file upload ... ?
-    user: int
+    user_id: int
 
 
 class ItemUpdate(BaseModel):

@@ -17,7 +17,7 @@ class UserInDB(SQLModel, table=True):
     email: str = Field(unique=True)
     created_at: Optional[datetime] = Field(default_factory=datetime.now)
     # hashed_password : str
-    items: list['ItemInDB'] = Relationship(back_populates='users')
+    items: list['ItemInDB'] = Relationship(back_populates='user')
 
 
 class ItemInDB(SQLModel, table=True):
@@ -29,7 +29,7 @@ class ItemInDB(SQLModel, table=True):
     user_id: int = Field(foreign_key='users.id')
     
     user: UserInDB = Relationship(back_populates='items')
-    clicks: list['ClickInDB'] = Relationship(back_populates='items')
+    clicks: list['ClickInDB'] = Relationship(back_populates='item')
 
 
 class ClickInDB(SQLModel, table=True):

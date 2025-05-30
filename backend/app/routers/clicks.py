@@ -15,7 +15,7 @@ def get_click_by_id(click_id: int, session: Session = Depends(db.get_session)):
 @clicks_router.post("/{item_id}", response_model=ClickResponse)
 def create_click(item_id: int, session: Session = Depends(db.get_session)):
     click = db.create_click(session, item_id)
-    return ClickResponse(click)
+    return ClickResponse(click=click)
 
 
 @clicks_router.delete("/{click_id}")
@@ -36,4 +36,5 @@ def get_click_by_time(
     user_id: int,
     timestamp: datetime,
     session: Session = Depends(db.get_session)):
-    db.get_clicks_by_time(session, user_id, timestamp)
+    clicks = db.get_clicks_by_time(session, user_id, timestamp)
+    return ClickCollection(clicks=clicks)
