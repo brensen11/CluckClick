@@ -1,17 +1,13 @@
+# Contains SQLModel ORM classes which
+# represent SQLModel tables
+
 from datetime import datetime
 from typing import Optional
 from sqlmodel import SQLModel, Field, Relationship
 
 # ------------------------------ #
-# ------- Database Models ------ #
+#         Database Models        #
 # ------------------------------ #
-
-
-# class Click(SQLModel):
-#     """Represents 1 click of an item and when it occurred"""
-#     id: int
-#     clicked_at: datetime
-#     item: Item
 
 class UserInDB(SQLModel, table=True):
     __tablename__ = 'users'
@@ -20,12 +16,8 @@ class UserInDB(SQLModel, table=True):
     username: str = Field(unique=True, index=True)
     email: str = Field(unique=True)
     created_at: Optional[datetime] = Field(default_factory=datetime.now)
-    # TODO what does this do?
-    # chats: list["ChatInDB"] = Relationship(
-    #     back_populates="users",
-    #     link_model=UserChatLinkInDB,
-    # )
     # hashed_password : str
+    items: list['ItemInDB'] = Relationship(back_populates='users')
 
 
 class ItemInDB(SQLModel, table=True):
@@ -35,6 +27,9 @@ class ItemInDB(SQLModel, table=True):
     name: str
     image: str
     user_id: int = Field(foreign_key='users.id')
+    
+    user: UserInDB = Relationship(back_populates='items')
+    clicks: list['ClickInDB'] = Relationship(back_populates='items')
 
 
 class ClickInDB(SQLModel, table=True):
@@ -43,3 +38,5 @@ class ClickInDB(SQLModel, table=True):
     id: Optional[int] = Field(default=None, primary_key=True)
     clicked_at: Optional[datetime] = Field(default_factory=datetime.now)
     item_id: int = Field(foreign_key='items.id')
+
+    item: ItemInDB = Relationship(back_populates='clicks')
